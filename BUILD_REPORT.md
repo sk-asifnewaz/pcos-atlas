@@ -1,4 +1,4 @@
-# PCOS-HARM build report
+# PCOS-ATLAS build report
 
 Built from 33 catalogue entries.
 

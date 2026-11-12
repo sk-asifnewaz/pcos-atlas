@@ -1,4 +1,4 @@
-# PCOS-HARM — a provenance-verified, de-duplicated harmonised PCOS corpus
+# PCOS-ATLAS — a provenance-verified, de-duplicated harmonised PCOS corpus
 
 Built from the 33 catalogue entries audited in this project. **33 entries → 27 distinct
 collections → 5 collections that survive verification → 1,425 patient records.**
@@ -85,6 +85,9 @@ harmonized/
   images/
     image_registry.csv        13 image entries, decisions and reasons
     README.md                 why the image modality yields 295 images
+  docs/
+    DATA_AVAILABILITY.md      replacement text for the paper
+    RA_HANDOVER.md            instructions for the manuscript edit
   core/                       generated; gitignored
     core_records.csv          one row per patient: label, country, licence, source
     harmonized_long.csv       tidy: one row per (record, variable, value)
@@ -250,35 +253,15 @@ permissively licensed release — that would breach ShareAlike.
 ## 9. Rebuild
 
 ```powershell
-python fetch.py                      # retrieve the 6 sources, verify SHA-256
-uv run --with pandas --with openpyxl --with numpy python build_harmonized.py
-uv run --with pandas python build_image_registry.py
-uv run --with pandas --with numpy --with scikit-learn python baseline_loco.py
+uv run --with pandas --with openpyxl --with numpy python Works\harmonized\build_harmonized.py
 ```
 
 Deterministic: the only randomness is the split seed. Rebuilds reproduce every count in
 `BUILD_REPORT.md`.
 
-`fetch.py --verify` checks what is already present without downloading.
-`fetch.py --from-dir PATH` accepts manually downloaded files (needed for the two
-Mendeley sources). Kaggle sources need the Kaggle CLI and credentials.
-
-**The repository does not contain the data.** `core/`, `sources/` and `_downloads/`
-are gitignored. Committing them would publish the corpus, which two source licences
-prohibit.
-
 ---
 
-## 10. How to cite
-
-See `CITATION.cff`. If you use the corpus or the transfer benchmark, cite the
-accompanying paper and the archived release. Each source collection must also be
-cited — attribution is a licence condition for the CC BY and CC BY-NC-SA sources,
-not a courtesy. The required forms are in `manifest/sources.csv`.
-
----
-
-## 11. Findings this build surfaced
+## 10. Findings this build surfaced
 
 These were not visible in the atlas and are new contributions in their own right:
 

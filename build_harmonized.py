@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-PCOS-HARM builder
+PCOS-ATLAS builder
 =================
 Builds a provenance-verified, de-duplicated, licence-tiered harmonised PCOS
 corpus from the 33 catalogue entries audited in this project.
@@ -763,7 +763,7 @@ n_full = len(full)
 n_full_pos = int((full["label_pcos"] == 1).sum())
 
 lines = [
-    "# PCOS-HARM build report",
+    "# PCOS-ATLAS build report",
     "",
     f"Built from {n_entries} catalogue entries.",
     "",

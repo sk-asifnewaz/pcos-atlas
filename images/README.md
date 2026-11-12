@@ -20,7 +20,7 @@ so the exclusion is auditable rather than asserted.
    detection sets, the only clean independent classification collection is **Borna**:
    295 unique images, 3 classes (Normal / Dominant_Follicle / PCO), 0 cross-split leakage, 0 cross-dataset overlap.
 
-That is a validation set, not a corpus. Adding it to PCOS-HARM would not strengthen
+That is a validation set, not a corpus. Adding it to PCOS-ATLAS would not strengthen
 the dataset; it would invite the objection that the image half is decorative.
 
 ## Retained

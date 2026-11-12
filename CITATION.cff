@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: >-
   If you use this corpus, the audit protocol, or the transfer benchmark,
   please cite the accompanying paper and this archived release.
-title: "PCOS-HARM: a provenance-verified, de-duplicated harmonised PCOS corpus"
+title: "PCOS-ATLAS: a provenance-verified, de-duplicated harmonised PCOS corpus"
 abstract: >-
   A harmonised corpus and leave-one-collection-out transfer benchmark built from
   33 publicly available PCOS dataset entries. Six collections pass all six

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Image-side registry for PCOS-HARM.
+Image-side registry for PCOS-ATLAS.
 
 The image modality does not contribute to the binary core, but the reason must be
 auditable rather than asserted. This emits one row per image catalogue entry with
@@ -138,7 +138,7 @@ lines = [
          "(Normal / Dominant_Follicle / PCO), 0 cross-split leakage, 0 cross-dataset overlap."
          if len(retained) else "none."),
     "",
-    "That is a validation set, not a corpus. Adding it to PCOS-HARM would not strengthen",
+    "That is a validation set, not a corpus. Adding it to PCOS-ATLAS would not strengthen",
     "the dataset; it would invite the objection that the image half is decorative.",
     "",
     "## Retained",

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-PCOS-HARM baseline: leave-one-collection-out transfer.
+PCOS-ATLAS baseline: leave-one-collection-out transfer.
 One model, one task, one score per fold. No tuning, no feature selection.
 
 Features are the non-criterion variables in core/model_matrix.csv plus explicit
