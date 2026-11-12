@@ -1,0 +1,10 @@
+# Generated data - never commit. The corpus is reconstructed by fetch.py.
+sources/
+_downloads/
+core/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/

@@ -1,0 +1,36 @@
+kind,a,b,metric,value,verdict
+image_cross_dataset,PCOSGen_train,PCOSGen_test,pct_a_matched,22.03,partial_overlap
+image_cross_dataset,researchworks,Busakorn,pct_a_matched,0.07,partial_overlap
+image_cross_dataset,researchworks,impro_yvqsf,pct_a_matched,0.09,partial_overlap
+image_cross_dataset,Anagha_Choudhari,Shweta_2000,pct_a_matched,99.97,duplicate_subset
+image_global_containment,Anagha_Choudhari,PCOSGen_test,pct_a_matched,5.56,containment
+image_global_containment,Anagha_Choudhari,PCOSGen_train,pct_a_matched,8.01,containment
+image_global_containment,Anagha_Choudhari,Shweta_2000,pct_a_matched,99.97,containment
+image_global_containment,Anagha_Choudhari,ibadeus,pct_a_matched,62.14,containment
+image_global_containment,Anagha_Choudhari,impro_yvqsf,pct_a_matched,10.87,containment
+image_global_containment,Anagha_Choudhari,researchworks,pct_a_matched,36.77,containment
+image_global_containment,Busakorn,Shweta_2000,pct_a_matched,8.6,containment
+image_global_containment,Busakorn,researchworks,pct_a_matched,8.07,containment
+image_global_containment,PCOSGen_test,PCOSGen_train,pct_a_matched,63.28,containment
+image_global_containment,PCOSGen_test,Shweta_2000,pct_a_matched,11.78,containment
+image_global_containment,PCOSGen_test,VanessaS,pct_a_matched,6.95,containment
+image_global_containment,PCOSGen_test,ibadeus,pct_a_matched,58.45,containment
+image_global_containment,PCOSGen_train,Shweta_2000,pct_a_matched,14.16,containment
+image_global_containment,PCOSGen_train,VanessaS,pct_a_matched,7.44,containment
+image_global_containment,PCOSGen_train,ibadeus,pct_a_matched,88.88,containment
+image_global_containment,Shweta_2000,ibadeus,pct_a_matched,61.05,containment
+image_global_containment,Shweta_2000,impro_yvqsf,pct_a_matched,12.93,containment
+image_global_containment,Shweta_2000,researchworks,pct_a_matched,35.98,containment
+image_global_containment,VanessaS,ibadeus,pct_a_matched,5.28,containment
+image_global_containment,ibadeus,impro_yvqsf,pct_a_matched,5.15,containment
+image_global_containment,ibadeus,researchworks,pct_a_matched,39.35,containment
+image_global_containment,impro_yvqsf,researchworks,pct_a_matched,17.88,containment
+tabular_byte,Indirani_A,ibadeus,md5_mismatches,0.0,byte_identical
+tabular_schema,Samiksha_Dalvi,Lucas_Souza_Soares,shared_rows,0.0,same_generator_different_seed
+tabular_subset,Kottarathil_infertil,Kottarathil_full,shared_rows,541.0,column_subset
+tabular_cross_collection,Kottarathil_full,Chaabouni,shared_age_bmi_label_rows,4.0,coincidental (4.82% of the smaller collection; 3 coarse fields cannot establish identity)
+tabular_cross_collection,Kottarathil_full,Gawron,shared_age_bmi_label_rows,5.0,coincidental (3.16% of the smaller collection; 3 coarse fields cannot establish identity)
+tabular_cross_collection,Kottarathil_full,Sahil_Koli,shared_age_bmi_label_rows,20.0,coincidental (4.34% of the smaller collection; 3 coarse fields cannot establish identity)
+tabular_cross_collection,Chaabouni,Gawron,shared_age_bmi_label_rows,4.0,coincidental (4.82% of the smaller collection; 3 coarse fields cannot establish identity)
+tabular_cross_collection,Chaabouni,Sahil_Koli,shared_age_bmi_label_rows,4.0,coincidental (4.82% of the smaller collection; 3 coarse fields cannot establish identity)
+tabular_cross_collection,Gawron,Sahil_Koli,shared_age_bmi_label_rows,8.0,coincidental (5.06% of the smaller collection; 3 coarse fields cannot establish identity)

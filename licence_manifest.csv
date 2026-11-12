@@ -1,0 +1,11 @@
+collection,licence,tier,release_channel,may_ship_rows,may_ship_images,action,attribution_required,commercial_use_allowed
+Kottarathil_full,CC BY-NC-SA 4.0,noncommercial_sharealike,full_corpus_nc_sa,1,0,ship rows under CC BY-NC-SA 4.0 with attribution,1,0
+Chaabouni,CC BY 4.0,permissive,permissive_core,1,0,ship rows under CC BY 4.0 with attribution,1,1
+Gawron,CC0 1.0,permissive,permissive_core,1,0,ship rows under CC BY 4.0 with attribution,1,1
+Sahil_Koli,CC0,permissive,permissive_core,1,0,ship rows under CC BY 4.0 with attribution,1,1
+hasaanrana,Other (unspecified),unknown_do_not_redistribute,fetch_only,0,0,loader + row hashes only; no licence to redistribute,1,0
+Borna,CC BY 4.0 License.,permissive,permissive_core,0,1,ship deduplicated image manifest with attribution,1,1
+researchworks,CC BY 4.0,permissive,permissive_core,0,1,ship deduplicated image manifest with attribution,1,1
+Busakorn,CC BY 4.0,permissive,permissive_core,0,1,ship deduplicated image manifest with attribution,1,1
+VanessaS,Public Domain,permissive,permissive_core,0,1,ship deduplicated image manifest with attribution,1,1
+impro_yvqsf,CC BY 4.0,permissive,permissive_core,0,1,ship deduplicated image manifest with attribution,1,1

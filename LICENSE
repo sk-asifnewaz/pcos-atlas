@@ -1,0 +1,38 @@
+PCOS-HARM
+=========
+
+Copyright (c) 2026 Asif Newaz, Shraboni Biswas Naboni, Fahima Islam.
+
+The code, schema, documentation, exclusion catalogue, duplicate registry and
+split definitions in this repository are licensed under the Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0).
+
+You are free to share and adapt this material for non-commercial purposes,
+provided you give appropriate credit and distribute your contributions under
+the same license.
+
+Full legal code: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+
+--------------------------------------------------------------------------------
+SCOPE OF THIS LICENSE
+--------------------------------------------------------------------------------
+
+This license covers *this repository's own contribution*: the harmonisation
+code, the schema, the documentation, the exclusion catalogue, the duplicate
+registry, the split definitions and the baseline.
+
+It does NOT cover the source datasets. Each source retains its own license:
+
+  Kottarathil_full   CC BY-NC-SA 4.0
+  Chaabouni          CC BY 4.0
+  Gawron             CC0 1.0
+  Sahil_Koli         CC0
+  hasaanrana         unspecified (no license grant)
+  Kurdistan          CC BY 4.0
+
+No source data is redistributed in this repository. `fetch.py` retrieves each
+source from its original publisher and verifies it against a recorded SHA-256.
+Users are bound by each source's own license when they use that source.
+
+Note that CC0 and CC BY 4.0 sources remain usable for commercial purposes by
+anyone who obtains them; this repository cannot and does not restrict that.
