@@ -85,9 +85,6 @@ harmonized/
   images/
     image_registry.csv        13 image entries, decisions and reasons
     README.md                 why the image modality yields 295 images
-  docs/
-    DATA_AVAILABILITY.md      replacement text for the paper
-    RA_HANDOVER.md            instructions for the manuscript edit
   core/                       generated; gitignored
     core_records.csv          one row per patient: label, country, licence, source
     harmonized_long.csv       tidy: one row per (record, variable, value)

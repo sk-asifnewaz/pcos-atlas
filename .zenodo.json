@@ -1,0 +1,25 @@
+{
+  "title": "PCOS-ATLAS: a provenance-verified, de-duplicated harmonised PCOS corpus and transfer benchmark",
+  "description": "<p>A harmonised corpus and leave-one-collection-out transfer benchmark built from 33 publicly available PCOS dataset entries.</p><p><b>Result.</b> The 33 entries resolve to 27 distinct collections, of which 6 pass all six inclusion rules. Five form a 1,425-record binary-label core across four countries (503 positive, 35.3%). A six-fold leave-one-collection-out transfer benchmark reaches a mean AUROC of 0.676, against within-dataset accuracies above 95% reported in the literature. Of 13 image entries, one survives verification (295 images).</p><p><b>No source data are redistributed.</b> Two of the six sources are licensed CC BY-NC-SA 4.0 and unspecified respectively, which prohibit redistribution. <code>fetch.py</code> retrieves each source from its original publisher and verifies it against a recorded SHA-256 before the build proceeds; <code>build_harmonized.py</code> then regenerates every table and figure in the accompanying paper from those verified files.</p><p><b>Contents.</b> Harmonisation and verification code, source manifest with per-file hashes, the 33-entry exclusion catalogue, the duplicate registry, leave-one-collection-out split definitions, the image registry and the baseline.</p>",
+  "creators": [
+    { "name": "Newaz, Asif" },
+    { "name": "Naboni, Shraboni Biswas" },
+    { "name": "Islam, Fahima" }
+  ],
+  "license": "CC-BY-NC-SA-4.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "language": "eng",
+  "keywords": [
+    "polycystic ovary syndrome",
+    "PCOS",
+    "dataset audit",
+    "data provenance",
+    "dataset redundancy",
+    "shortcut learning",
+    "label leakage",
+    "benchmark",
+    "transfer learning"
+  ],
+  "notes": "The source datasets retain their original licences. Kottarathil (CC BY-NC-SA 4.0), Chaabouni (CC BY 4.0), Gawron (CC0 1.0), Sahil Koli (CC0), hasaanrana (unspecified), Kurdistan (CC BY 4.0). Cite each source collection when using this corpus."
+}
