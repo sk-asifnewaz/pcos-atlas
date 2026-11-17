@@ -1,9 +1,7 @@
 # PCOS-ATLAS — a provenance-verified, de-duplicated harmonised PCOS corpus
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24326688.svg)](https://doi.org/10.5281/zenodo.24326688)
-
 Built from the 33 catalogue entries audited in this project. **33 entries → 27 distinct
-collections → 5 collections that survive verification → 1,425 patient records.**
+collections → 7 that survive verification → 4 that form a 1,267-record binary core.**
 
 This is not a "mega-dataset" assembled to raise an accuracy number. It is the subset of
 public PCOS data that survives a provenance audit, expressed in one schema, with every
@@ -35,10 +33,10 @@ A collection enters the core only if it passes **all six**. Each rule is enforce
 | # | Rule | Rejects |
 |---|---|---|
 | R1 | Independent label — the target must not be a function of a Rotterdam input | Talukder, MD_Abdul_Kaium |
-| R2 | No tautology — no single input at purity 1.000 | Saba_Zafar, Lucas_Souza_Soares |
+| R2 | No tautology — no single input at purity 1.000 | Saba_Zafar, Lucas_Souza_Soares, Gawron |
 | R3 | Not synthetic by construction (documented or AND-rule signature) | Samiksha_Dalvi, Shaurya_Srivastava, Puspita |
 | R4 | No corrupted data — physiologically impossible values | Michael_Mendiola_Sy |
-| R5 | Licence permits redistribution (else fetch-only) | see §6 |
+| R5 | Licence permits lawful research use and can be served — by redistributing the rows where allowed, or by shipping a loader where not | see §6 |
 | R6 | Not a duplicate, subset or companion table | Kottarathil_infertil, Puspita_Period_Log, Indirani_A, Shweta, BORAN, PCOSGen, Anagha, ibadeus |
 
 R1–R4 are scientific. R5–R6 are legal and statistical.
@@ -51,19 +49,24 @@ R1–R4 are scientific. R5–R6 are legal and statistical.
 |---|---|---|---|---:|---:|---:|
 | Kottarathil_full | India | clinical (Rotterdam, retrospective) | CC BY-NC-SA 4.0 | full corpus | 541 | 177 | 32.7% |
 | Chaabouni | Tunisia | clinical (Rotterdam, case-control) | CC BY 4.0 | permissive | 88 | 45 | 51.1% |
-| Gawron | Poland | clinical (explicit Rotterdam columns) | CC0 1.0 | permissive | 158 | 141 | 89.2% |
 | Sahil_Koli | India | self-report survey | CC0 | permissive | 465 | 102 | 21.9% |
 | hasaanrana | Pakistan | self-report survey | Other (unspecified) | fetch-only | 173 | 38 | 22.1% |
-| **total** | **4 countries** | | | | **1,425** | **503** | **35.3%** |
+| **total** | **4 countries** | | | | **1,267** | **362** | **28.6%** |
 
-**711 records** are permissively licensed (CC BY 4.0). **1,252** can be redistributed if
+**553 records** are permissively licensed (CC BY 4.0). **1,094** can be redistributed if
 the corpus carries CC BY-NC-SA 4.0. **173** (hasaanrana) have no redistribution right and
 ship as a loader.
 
-A sixth collection, **Kurdistan** (Iraq, 242 records, 8 etiology classes after
-whitespace normalisation, PCOS n=46), is
-real and clean but answers a different question. It is held as a separate multi-class
-track rather than folded into the binary core.
+Two collections pass the rules but answer different questions, so they are held as
+separate tracks rather than folded into the binary core:
+
+- **Gawron** (Poland, 158 records, CC0) — its diagnosis is a deterministic function of the
+  criterion columns it ships, so it is tautological for PCOS prediction. It is the only
+  collection carrying explicit Rotterdam annotations, so it is retained for
+  criterion-level multi-label work (`core/gawron_criterion.csv`).
+- **Kurdistan** (Iraq, 242 records, CC BY 4.0) — nine etiology labels as distributed,
+  eight distinct after normalising a whitespace duplicate; PCOS n=46
+  (`core/kurdistan_etiology.csv`).
 
 ---
 
@@ -87,12 +90,16 @@ harmonized/
   images/
     image_registry.csv        13 image entries, decisions and reasons
     README.md                 why the image modality yields 295 images
+  docs/
+    DATA_AVAILABILITY.md      replacement text for the paper
+    RA_HANDOVER.md            instructions for the manuscript edit
   core/                       generated; gitignored
     core_records.csv          one row per patient: label, country, licence, source
     harmonized_long.csv       tidy: one row per (record, variable, value)
     harmonized_wide.csv       variables present in >=3 collections
     model_matrix.csv          wide minus all Rotterdam criterion variables
-    kurdistan_etiology.csv    secondary track: 242 records, 8 classes
+    gawron_criterion.csv      criterion track: 158 records, HA/PCOM/ovulatory labels
+    kurdistan_etiology.csv    etiology track: 242 records, 8 classes
   sources/                    fetched source files; gitignored
 ```
 
@@ -115,8 +122,8 @@ two source licences prohibit.
 
 ### Why long format is the primary table
 
-Five collections share at most **10 of 41 measured variables**. A merge on all 41
-would leave **55% of cells structurally empty** — and structural missingness is not
+Four collections share at most **6 of 35 measured variables**. A merge on all 35
+would leave **49% of cells structurally empty** — and structural missingness is not
 missing-at-random. `harmonized_long.csv` keeps every measured value with its original
 unit, the conversion applied, and the source column, so nothing is silently lost:
 
@@ -156,23 +163,25 @@ Within each training fold, `inner_split` gives an 80/20 stratified holdout.
 
 ### First result
 
-`baseline_loco.py` — ExtraTrees on the eight non-criterion variables plus missingness
-indicators, no tuning, no feature selection:
+`baseline_loco.py` — ExtraTrees on the four variables that remain once every Rotterdam
+component is withheld (BMI, age, weight, height) plus missingness indicators, no tuning,
+no feature selection:
 
 | held-out collection | n test | prevalence | AUROC |
 |---|---:|---:|---:|
-| Chaabouni | 88 | 51.1% | 0.675 |
-| Gawron | 158 | 89.2% | 0.806 |
-| Kottarathil_full | 541 | 32.7% | 0.587 |
-| Sahil_Koli | 465 | 21.9% | 0.612 |
-| hasaanrana | 172 | 22.1% | 0.698 |
-| **mean** | | | **0.676** |
+| Chaabouni | 88 | 51.1% | 0.608 |
+| Kottarathil_full | 541 | 32.7% | 0.640 |
+| Sahil_Koli | 465 | 21.9% | 0.638 |
+| hasaanrana | 172 | 22.1% | 0.668 |
+| **mean** | | | **0.638** |
 
-The published within-dataset accuracies for this field are above 95%. The same variables,
-transferred across populations, reach **0.676**. That gap is the point of the dataset: it
-is a benchmark for the claim the field makes, not another way to inflate it.
+The published within-dataset accuracies for this field are above 95%. The same
+anthropometric variables, transferred across populations, reach **0.638**. That gap is
+the point of the dataset: it is a benchmark for the claim the field makes, not another way
+to inflate it.
 
-Gawron's 0.806 should be read with care — only 17 negatives, so its AUROC is unstable.
+The size-weighted mean is 0.641. This is a ceiling on what non-criterion information
+supports, not a diagnostic result.
 
 ---
 
@@ -187,8 +196,8 @@ That produces three release channels, not two:
 
 | channel | collections | records | licence | commercial use |
 |---|---|---:|---|---|
-| **permissive core** | Chaabouni (CC BY 4.0), Gawron (CC0), Sahil_Koli (CC0) | 711 | CC BY 4.0 | yes |
-| **full corpus** | + Kottarathil_full (CC BY-NC-SA 4.0) | 1,252 | CC BY-NC-SA 4.0 | no |
+| **permissive core** | Chaabouni (CC BY 4.0), Sahil_Koli (CC0) | 553 | CC BY 4.0 | yes |
+| **full corpus** | + Kottarathil_full (CC BY-NC-SA 4.0) | 1,094 | CC BY-NC-SA 4.0 | no |
 | **fetch-only** | hasaanrana (licence unspecified) | 173 | — | — |
 
 **hasaanrana is the only genuine blocker.** "Other (specified in description)" is not a
@@ -221,20 +230,20 @@ permissively licensed release — that would breach ShareAlike.
 
 ## 7. Known limitations
 
-1. **Prevalence is not comparable across collections.** Gawron is an anovulation cohort
-   (89% PCOS); Sahil Koli is a general self-report survey (22%). Pooling without weighting
-   will bias any pooled estimate.
-2. **Label ascertainment differs.** Three collections are clinician-diagnosed; two are
+1. **Prevalence is not comparable across collections.** Chaabouni is a case-control
+   cohort (51% PCOS); Sahil Koli is a general self-report survey (22%). Pooling without
+   weighting will bias any pooled estimate.
+2. **Label ascertainment differs.** Two collections are clinician-diagnosed; two are
    self-report. A model cannot distinguish "PCOS" from "told I had PCOS".
 3. **Only Gawron supports criterion-level supervision.** If you want OD/HA/PCOM labels,
-   you have 158 records, not 1,425.
+   you have 158 criterion records, not 1,267.
 4. **The image modality contributes nothing to the binary core.** After global perceptual
    deduplication the image landscape is one pool plus residuals, and the detection
    collections carry object classes, not diagnosis.
 5. **Kottarathil remains criterion-leaking** even though the leaking columns are withheld
    from `model_matrix.csv`: the label was assigned by clinicians who saw those columns.
    Withholding them removes the mechanical leak, not the ascertainment path.
-6. **Four countries, five collections.** This is a transfer benchmark, not a
+6. **Four countries, four collections.** This is a transfer benchmark, not a
    representative sample of any population.
 
 ---
@@ -287,7 +296,7 @@ collection — and each is reported as **coincidental**. Three coarse fields can
 establish record identity, and the collections have disjoint schemas, so exact row-level
 matching is not testable across them.
 
-The evidence that these five collections are independent is **provenance**, not row
+The evidence that these four collections are independent is **provenance**, not row
 matching: different countries, different recruitment frames, different label instruments,
 different publication years, and no shared schema lineage. Where duplication *was*
 testable — byte identity, row hashes, perceptual hashes — it was found and is recorded:

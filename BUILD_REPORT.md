@@ -4,16 +4,16 @@ Built from 33 catalogue entries.
 
 ## What survives
 
-- **5 collections** pass all six inclusion rules.
-- **1425 patient records**, of which **1424** carry a usable binary label (503 positive, 35.3%).
+- **4 collections** pass all six inclusion rules.
+- **1267 patient records**, of which **1266** carry a usable binary label (362 positive, 28.6%).
 
 ### Release tiers
 
-- **Permissive core** — 711 records (288 positive), CC BY 4.0. Chaabouni + Gawron + Sahil_Koli. Commercial reuse allowed.
-- **Full corpus** — 1252 records (465 positive), CC BY-NC-SA 4.0. Adds Kottarathil_full (541 records). ShareAlike forces the whole harmonised corpus to carry the same licence.
+- **Permissive core** — 553 records (147 positive), CC BY 4.0. Chaabouni + Sahil_Koli. Commercial reuse allowed.
+- **Full corpus** — 1094 records (324 positive), CC BY-NC-SA 4.0. Adds Kottarathil_full (541 records). ShareAlike forces the whole harmonised corpus to carry the same licence.
 - **Fetch-only** — 173 records (hasaanrana): licence unspecified, so no redistribution right exists. Ship loader + row hashes.
 
-- **23 values** were outside the physiological window and are set to NA in the wide matrix (0.09% of all values).
+- **21 values** were outside the physiological window and are set to NA in the wide matrix (0.09% of all values).
 
 ## Per-collection yield
 
@@ -21,7 +21,6 @@ Built from 33 catalogue entries.
 |---|---|---|---|---|---:|---:|---:|---:|
 | Kottarathil_full | India | clinical (Rotterdam, retrospective) | CC BY-NC-SA 4.0 | noncommercial_sharealike | 541 | 177 | 32.7% | 17 |
 | Chaabouni | Tunisia | clinical (Rotterdam, case-control) | CC BY 4.0 | permissive | 88 | 45 | 51.1% | 1 |
-| Gawron | Poland | clinical (explicit Rotterdam criterion columns) | CC0 1.0 | permissive | 158 | 141 | 89.2% | 2 |
 | Sahil_Koli | India | self-report survey | CC0 | permissive | 465 | 102 | 21.9% | 3 |
 | hasaanrana | Pakistan | self-report survey | Other (unspecified) | unknown_do_not_redistribute | 173 | 38 | 22.1% | 0 |
 
@@ -29,51 +28,45 @@ Built from 33 catalogue entries.
 
 | variable | collections | criterion leak |
 |---|---:|---|
-| bmi | 5 | no |
-| age_years | 4 | no |
-| height_cm | 4 | no |
-| weight_kg | 4 | no |
+| bmi | 4 | no |
 | cycle_irregular | 3 | yes |
-| fsh_miu_ml | 3 | no |
+| age_years | 3 | no |
+| weight_kg | 3 | no |
 | hirsutism | 3 | yes |
-| vitd_ng_ml | 3 | no |
-| prolactin_ng_ml | 3 | no |
-| lh_miu_ml | 3 | no |
-| estradiol_pmol_l | 2 | no |
-| tsh_miu_l | 2 | no |
-| chol_total_mmol_l | 2 | no |
-| amh_ng_ml | 2 | no |
+| height_cm | 3 | no |
 | acne | 2 | no |
+| vitd_ng_ml | 2 | no |
+| hair_loss | 2 | no |
+| fsh_miu_ml | 2 | no |
 | dbp_mmhg | 2 | no |
-| fast_food | 2 | no |
-| homa_ir | 2 | no |
 | period_duration_days | 2 | no |
 | skin_darkening | 2 | no |
 | sbp_mmhg | 2 | no |
-| hair_loss | 2 | no |
-| hdl_mmol_l | 2 | no |
-| glucose_fasting_mmol_l | 2 | no |
-| ldl_mmol_l | 2 | no |
-| weight_gain | 2 | no |
-| trig_mmol_l | 2 | no |
-| waist_cm | 2 | no |
-| testosterone_nmol_l | 2 | yes |
 | regular_exercise | 2 | no |
-| cycle_length_days | 1 | yes |
-| glucose_random_mg_dl | 1 | no |
-| fg_score | 1 | yes |
-| insulin_uiu_ml | 1 | no |
+| lh_miu_ml | 2 | no |
+| prolactin_ng_ml | 2 | no |
+| fast_food | 2 | no |
+| weight_gain | 2 | no |
+| waist_cm | 2 | no |
+| amh_ng_ml | 1 | no |
 | hip_cm | 1 | no |
+| glucose_random_mg_dl | 1 | no |
 | follicle_r_n | 1 | yes |
+| estradiol_pmol_l | 1 | no |
 | family_history | 1 | no |
 | follicle_l_n | 1 | yes |
-| ovary_vol_r_ml | 1 | yes |
-| pcom | 1 | yes |
-| ovary_vol_l_ml | 1 | yes |
+| chol_total_mmol_l | 1 | no |
+| hdl_mmol_l | 1 | no |
+| glucose_fasting_mmol_l | 1 | no |
+| ldl_mmol_l | 1 | no |
+| homa_ir | 1 | no |
+| tsh_miu_l | 1 | no |
+| testosterone_nmol_l | 1 | yes |
+| trig_mmol_l | 1 | no |
 
-## Wide core: 10 variables present in >=3 collections
+## Wide core: 6 variables present in >=3 collections
 
-Variables: `bmi`, `age_years`, `height_cm`, `weight_kg`, `cycle_irregular`, `fsh_miu_ml`, `hirsutism`, `vitd_ng_ml`, `prolactin_ng_ml`, `lh_miu_ml`
+Variables: `bmi`, `cycle_irregular`, `age_years`, `weight_kg`, `hirsutism`, `height_cm`
 
 ## Findings surfaced by this build
 

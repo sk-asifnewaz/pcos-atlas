@@ -29,8 +29,5 @@ tabular_byte,Indirani_A,ibadeus,md5_mismatches,0.0,byte_identical
 tabular_schema,Samiksha_Dalvi,Lucas_Souza_Soares,shared_rows,0.0,same_generator_different_seed
 tabular_subset,Kottarathil_infertil,Kottarathil_full,shared_rows,541.0,column_subset
 tabular_cross_collection,Kottarathil_full,Chaabouni,shared_age_bmi_label_rows,4.0,coincidental (4.82% of the smaller collection; 3 coarse fields cannot establish identity)
-tabular_cross_collection,Kottarathil_full,Gawron,shared_age_bmi_label_rows,5.0,coincidental (3.16% of the smaller collection; 3 coarse fields cannot establish identity)
 tabular_cross_collection,Kottarathil_full,Sahil_Koli,shared_age_bmi_label_rows,20.0,coincidental (4.34% of the smaller collection; 3 coarse fields cannot establish identity)
-tabular_cross_collection,Chaabouni,Gawron,shared_age_bmi_label_rows,4.0,coincidental (4.82% of the smaller collection; 3 coarse fields cannot establish identity)
 tabular_cross_collection,Chaabouni,Sahil_Koli,shared_age_bmi_label_rows,4.0,coincidental (4.82% of the smaller collection; 3 coarse fields cannot establish identity)
-tabular_cross_collection,Gawron,Sahil_Koli,shared_age_bmi_label_rows,8.0,coincidental (5.06% of the smaller collection; 3 coarse fields cannot establish identity)

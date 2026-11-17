@@ -539,7 +539,10 @@ DECISION = {
     # collection: (decision, reason)
     "Kottarathil_full": ("core", "real, independent label; PCOM criterion leakage flagged and ablated"),
     "Chaabouni": ("core", "real case-control, Rotterdam-diagnosed; E2 flagged as downstream correlate"),
-    "Gawron": ("core", "real; only collection with explicit Rotterdam criterion columns"),
+    "Gawron": ("core_criterion",
+               "target is a deterministic function of the shipped criterion columns "
+               "(purity 1.0000 over all 10 tuples) - tautological for PCOS prediction; "
+               "retained only as a criterion-level multi-label track"),
     "Sahil_Koli": ("core", "real self-report survey; label is self-reported diagnosis"),
     "hasaanrana": ("core", "real survey; malformed third label value repaired to NA"),
     "Kurdistan": ("core_etiology", "real; 9-class etiology, PCOS n=46 - kept as multi-class track only"),
@@ -744,6 +747,32 @@ kur["task"] = "multi_class_etiology"
 kur.to_csv(CORE / "kurdistan_etiology.csv", index=False)
 
 # --------------------------------------------------------------------------
+# 8c. secondary track: Gawron criterion-level multi-label
+# --------------------------------------------------------------------------
+# The label is derived from the criterion columns, so Gawron cannot enter the
+# binary core (R2). It remains the only collection carrying explicit Rotterdam
+# criteria, which makes it usable for multi-label criterion prediction.
+gaw = pd.read_excel(
+    resolve_source("Gawron", find_file("16.", ext=".xlsx")), sheet_name="Sheet1")
+gaw.columns = [str(c).strip() for c in gaw.columns]
+criterion_cols = [c for c in gaw.columns if c.startswith("PCOS ")]
+amh = next(c for c in gaw.columns if c.startswith("Anti-M"))
+crit = gaw[["Age [years]", "Weight [kg]", "Height [cm]", "BMI [kg/m2]",
+            "Ferriman-Gallwey Scale Score [n]", amh] + criterion_cols]
+crit = crit[crit["Age [years]"].notna()].copy()   # drops the summary rows
+crit.insert(0, "record_id", [f"Gawron-{i:05d}" for i in range(len(crit))])
+crit = crit.rename(columns={
+    "Age [years]": "age_years", "Weight [kg]": "weight_kg",
+    "Height [cm]": "height_cm", "BMI [kg/m2]": "bmi",
+    "Ferriman-Gallwey Scale Score [n]": "fg_score", amh: "amh_pmol_l",
+})
+crit["collection"] = "Gawron"
+crit["country"] = "Poland"
+crit["licence"] = "CC0 1.0"
+crit["task"] = "criterion_multilabel"
+crit.to_csv(CORE / "gawron_criterion.csv", index=False)
+
+# --------------------------------------------------------------------------
 # 9. build report
 # --------------------------------------------------------------------------
 n_entries = len(cat)
@@ -776,10 +805,10 @@ lines = [
     "### Release tiers",
     "",
     f"- **Permissive core** — {n_perm} records ({n_perm_pos} positive), CC BY 4.0. "
-    "Chaabouni + Gawron + Sahil_Koli. Commercial reuse allowed.",
+    f"{' + '.join(sorted(perm['collection'].unique()))}. Commercial reuse allowed.",
     f"- **Full corpus** — {n_full} records ({n_full_pos} positive), CC BY-NC-SA 4.0. "
-    f"Adds Kottarathil_full ({n_ncsa} records). ShareAlike forces the whole "
-    "harmonised corpus to carry the same licence.",
+    f"Adds {' + '.join(sorted(ncsa['collection'].unique()))} ({n_ncsa} records). "
+    "ShareAlike forces the whole harmonised corpus to carry the same licence.",
     f"- **Fetch-only** — {n_rec - n_full} records (hasaanrana): licence unspecified, "
     "so no redistribution right exists. Ship loader + row hashes.",
     "",
