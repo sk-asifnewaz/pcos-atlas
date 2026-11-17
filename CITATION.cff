@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: >-
   If you use this corpus, the audit protocol, or the transfer benchmark,
   please cite the accompanying paper and this archived release.
-title: "PCOS-ATLAS: a provenance-verified, de-duplicated harmonised PCOS corpus"
+title: "PCOS-ATLAS: a provenance-verified, de-duplicated harmonised PCOS corpus and transfer benchmark"
 abstract: >-
   A harmonised corpus and leave-one-collection-out transfer benchmark built from
   33 publicly available PCOS dataset entries. Six collections pass all six
@@ -12,12 +12,15 @@ abstract: >-
   the split definitions and the baseline.
 type: software
 version: 1.0.0
-date-released: 2026-11-10
+date-released: 2026-11-18
 license: CC-BY-NC-SA-4.0
-# TODO: confirm author order, affiliations and ORCIDs before the first release.
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.24326688
+    description: Concept DOI (always resolves to the latest version)
 authors:
   - family-names: Newaz
-    given-names: Asif
+    given-names: Sk. Md. Asif
   - family-names: Naboni
     given-names: Shraboni Biswas
   - family-names: Islam

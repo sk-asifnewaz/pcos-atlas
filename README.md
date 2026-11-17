@@ -1,5 +1,7 @@
 # PCOS-ATLAS — a provenance-verified, de-duplicated harmonised PCOS corpus
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24326688.svg)](https://doi.org/10.5281/zenodo.24326688)
+
 Built from the 33 catalogue entries audited in this project. **33 entries → 27 distinct
 collections → 5 collections that survive verification → 1,425 patient records.**
 
