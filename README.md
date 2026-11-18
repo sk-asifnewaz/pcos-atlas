@@ -51,7 +51,7 @@ R1–R4 are scientific. R5–R6 are legal and statistical.
 | Chaabouni | Tunisia | clinical (Rotterdam, case-control) | CC BY 4.0 | permissive | 88 | 45 | 51.1% |
 | Sahil_Koli | India | self-report survey | CC0 | permissive | 465 | 102 | 21.9% |
 | hasaanrana | Pakistan | self-report survey | Other (unspecified) | fetch-only | 173 | 38 | 22.1% |
-| **total** | **4 countries** | | | | **1,267** | **362** | **28.6%** |
+| **total** | **3 countries** | | | | **1,267** | **362** | **28.6%** |
 
 **553 records** are permissively licensed (CC BY 4.0). **1,094** can be redistributed if
 the corpus carries CC BY-NC-SA 4.0. **173** (hasaanrana) have no redistribution right and
@@ -243,7 +243,7 @@ permissively licensed release — that would breach ShareAlike.
 5. **Kottarathil remains criterion-leaking** even though the leaking columns are withheld
    from `model_matrix.csv`: the label was assigned by clinicians who saw those columns.
    Withholding them removes the mechanical leak, not the ascertainment path.
-6. **Four countries, four collections.** This is a transfer benchmark, not a
+6. **Three countries, four collections.** This is a transfer benchmark, not a
    representative sample of any population.
 
 ---

@@ -11,7 +11,7 @@ abstract: >-
   manifest with SHA-256 hashes, the exclusion catalogue, the duplicate registry,
   the split definitions and the baseline.
 type: software
-version: 1.1.0
+version: 1.1.1
 date-released: 2026-11-18
 license: CC-BY-NC-SA-4.0
 identifiers:
